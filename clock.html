@@ -8,7 +8,7 @@
     <title>JavaScript实现简易网页在线时钟</title>
 </head>
 
-<body onload="webClock()">
+<body>
     <p id="dateinfo">这里显示日期格式</p>
     <script type="text/javascript">
         /*利用原生JavaScript实现网页在线时钟 直接将函数加载到body里面即可  */
@@ -62,6 +62,8 @@
             }
             return '' + i;
         }
+
+        webClock();
     </script>
 </body>
 
