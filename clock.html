@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JavaScript实现简易网页在线时钟</title>
+</head>
+
+<body onload="webClock()">
+    <p id="dateinfo">这里显示日期格式</p>
+    <script type="text/javascript">
+        /*利用原生JavaScript实现网页在线时钟 直接将函数加载到body里面即可  */
+        function webClock() {
+            var today = new Date(); //初始化Date对象
+            var hour = today.getHours(); //小时
+            var minute = today.getMinutes(); //分钟
+            var week = today.getDay(); //周
+            var year = today.getFullYear(); //年
+            var month = today.getMonth() + 1; //月
+            var day = today.getDate(); //日
+            var second = today.getSeconds(); //秒
+            month = checkTime(month); //月的格式化
+            day = checkTime(day); //日的格式化
+            hour = checkTime(hour); //小时数的格式化
+            minute = checkTme(minute); //分钟数的格式化
+            second = checkTime(second); //秒数的格式化
+            var weekPin = ''; //周期格式化
+            switch (week) {
+                case 1:
+                    weekPin = '一';
+                    break;
+                case 2:
+                    weekPin = '二';
+                    break;
+                case 3:
+                    weekPin = '三';
+                    break;
+                case 4:
+                    weekPin = '四';
+                    break;
+                case 5:
+                    weekPin = '五';
+                    break;
+                case 6:
+                    weekPin = '六';
+                    break;
+                default:
+                    weekPin = '日';
+            }
+            //将拼接的字符串 渲染到HTML标签里面
+            document.getElementById('dateinfo').innerHTML = year + "年"
+                + month + "月" + day + "日 " + "星期" + weekPin + " " + hour + ":"
+                + minute + ":" + second;
+            t = setTimeout('webClock()', 500);
+        }
+        //格式化
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return '' + i;
+        }
+    </script>
+</body>
+
+</html>
